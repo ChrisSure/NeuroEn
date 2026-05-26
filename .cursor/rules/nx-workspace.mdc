@@ -1,0 +1,12 @@
+---
+description: Nx workspace conventions and commands
+globs: **/*
+alwaysApply: true
+---
+
+# Nx Workspace Rules
+
+- Always use `nx` commands instead of `npm run` or `ng` directly when interacting with projects.
+- Use `nx g` (generate) to create new components, services, or projects to ensure they are properly integrated into the workspace.
+- Respect the workspace structure: `client` and `ui` are Angular projects, `server` is a NestJS project.
+- When running tasks, prefer `nx run <project>:<target>` or `nx <target> <project>`.

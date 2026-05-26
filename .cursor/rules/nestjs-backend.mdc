@@ -1,0 +1,13 @@
+---
+description: NestJS backend conventions
+globs: server/**/*.ts
+alwaysApply: false
+---
+
+# NestJS Backend Rules
+
+- **Architecture**: Follow the standard NestJS architecture (Controllers -> Services -> Repositories/Data Access).
+- **Controllers**: Keep controllers thin. They should only handle HTTP requests/responses and delegate business logic to services.
+- **DTOs**: Always use Data Transfer Objects (DTOs) for request payloads and validate them using `class-validator` and `class-transformer`.
+- **Dependency Injection**: Rely heavily on NestJS dependency injection. Avoid instantiating classes manually with `new` if they can be injected.
+- **Error Handling**: Use NestJS built-in exceptions (e.g., `NotFoundException`, `BadRequestException`) for consistent error responses.
