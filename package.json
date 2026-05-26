@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:all": "nx run-many -t serve -p client server --output-style=stream"
+    "start:all": "nx run-many -t serve -p client server --output-style=stream",
+    "build": "nx run-many -t build -p client server --output-style=stream",
+    "lint": "nx run-many -t lint -p client ui server --output-style=stream",
+    "test": "nx run-many -t test -p client ui server --output-style=stream",
+    "test:coverage": "nx run-many -t test -p client ui server --coverage --output-style=stream",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write ."
   },
   "private": true,
   "devDependencies": {

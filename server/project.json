@@ -59,6 +59,14 @@
           "buildTarget": "server:build:production"
         }
       }
+    },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "config": "server/vitest.config.mts",
+        "reportsDirectory": "coverage/server"
+      }
     }
   },
   "tags": []

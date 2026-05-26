@@ -24,9 +24,7 @@
             },
             "build": {
               "executor": "@angular/build:application",
-              "outputs": [
-                "{options.outputPath}"
-              ],
+              "outputs": ["{options.outputPath}"],
               "options": {
                 "outputPath": "dist/client",
                 "browser": "client/src/main.ts",
@@ -39,9 +37,7 @@
                     "input": "client/public"
                   }
                 ],
-                "styles": [
-                  "client/src/styles.scss"
-                ]
+                "styles": ["client/src/styles.scss"]
               },
               "configurations": {
                 "production": {
@@ -68,13 +64,8 @@
               "defaultConfiguration": "production",
               "parallelism": true,
               "cache": true,
-              "dependsOn": [
-                "^build"
-              ],
-              "inputs": [
-                "production",
-                "^production"
-              ]
+              "dependsOn": ["^build"],
+              "inputs": ["production", "^production"]
             },
             "serve": {
               "continuous": true,
@@ -102,10 +93,7 @@
               "configurations": {},
               "parallelism": true,
               "cache": true,
-              "inputs": [
-                "default",
-                "^production"
-              ]
+              "inputs": ["default", "^production"]
             },
             "serve-static": {
               "continuous": true,
@@ -147,18 +135,12 @@
                 "{workspaceRoot}/eslint.config.mjs",
                 "{workspaceRoot}/tools/eslint-rules/**/*",
                 {
-                  "externalDependencies": [
-                    "eslint"
-                  ]
+                  "externalDependencies": ["eslint"]
                 }
               ],
-              "outputs": [
-                "{options.outputFile}"
-              ],
+              "outputs": ["{options.outputFile}"],
               "metadata": {
-                "technologies": [
-                  "eslint"
-                ],
+                "technologies": ["eslint"],
                 "description": "Runs ESLint on project",
                 "help": {
                   "command": "npx eslint --help",
@@ -175,33 +157,21 @@
             },
             "build": {
               "cache": true,
-              "dependsOn": [
-                "^build"
-              ],
+              "dependsOn": ["^build"],
               "inputs": [
                 "production",
                 "^production",
                 {
-                  "externalDependencies": [
-                    "webpack-cli"
-                  ]
+                  "externalDependencies": ["webpack-cli"]
                 },
                 {
                   "json": "{workspaceRoot}/tsconfig.json",
-                  "fields": [
-                    "extends",
-                    "files",
-                    "include"
-                  ]
+                  "fields": ["extends", "files", "include"]
                 }
               ],
-              "outputs": [
-                "{workspaceRoot}/dist\\server"
-              ],
+              "outputs": ["{workspaceRoot}/dist\\server"],
               "metadata": {
-                "technologies": [
-                  "webpack"
-                ],
+                "technologies": ["webpack"],
                 "description": "Runs Webpack build",
                 "help": {
                   "command": "npx webpack-cli build --help",
@@ -209,25 +179,19 @@
                     "options": {
                       "json": "stats.json"
                     },
-                    "args": [
-                      "--profile"
-                    ]
+                    "args": ["--profile"]
                   }
                 }
               },
               "executor": "nx:run-commands",
               "options": {
                 "cwd": "server",
-                "args": [
-                  "--node-env=production"
-                ],
+                "args": ["--node-env=production"],
                 "command": "webpack-cli build"
               },
               "configurations": {
                 "development": {
-                  "args": [
-                    "--node-env=development"
-                  ]
+                  "args": ["--node-env=development"]
                 }
               },
               "parallelism": true
@@ -236,9 +200,7 @@
               "continuous": true,
               "executor": "@nx/js:node",
               "defaultConfiguration": "development",
-              "dependsOn": [
-                "build"
-              ],
+              "dependsOn": ["build"],
               "options": {
                 "buildTarget": "server:build",
                 "runBuildTargetDependencies": false
@@ -257,24 +219,17 @@
               "continuous": true,
               "options": {
                 "cwd": "server",
-                "args": [
-                  "--node-env=production"
-                ],
+                "args": ["--node-env=production"],
                 "command": "webpack-cli serve"
               },
               "metadata": {
-                "technologies": [
-                  "webpack"
-                ],
+                "technologies": ["webpack"],
                 "description": "Starts Webpack dev server in production mode",
                 "help": {
                   "command": "npx webpack-cli serve --help",
                   "example": {
                     "options": {
-                      "args": [
-                        "--client-progress",
-                        "--history-api-fallback "
-                      ]
+                      "args": ["--client-progress", "--history-api-fallback "]
                     }
                   }
                 }
@@ -285,9 +240,7 @@
             },
             "serve-static": {
               "continuous": true,
-              "dependsOn": [
-                "build"
-              ],
+              "dependsOn": ["build"],
               "executor": "@nx/web:file-server",
               "options": {
                 "buildTarget": "build",
@@ -297,9 +250,7 @@
               "parallelism": true
             },
             "build-deps": {
-              "dependsOn": [
-                "^build"
-              ],
+              "dependsOn": ["^build"],
               "configurations": {},
               "options": {},
               "parallelism": true,
@@ -307,9 +258,7 @@
             },
             "watch-deps": {
               "continuous": true,
-              "dependsOn": [
-                "build-deps"
-              ],
+              "dependsOn": ["build-deps"],
               "executor": "nx:run-commands",
               "options": {
                 "command": "npx nx watch --projects server --includeDependentProjects -- npx nx build-deps server"
@@ -318,9 +267,7 @@
               "parallelism": true
             },
             "prune-lockfile": {
-              "dependsOn": [
-                "build"
-              ],
+              "dependsOn": ["build"],
               "cache": true,
               "executor": "@nx/js:prune-lockfile",
               "outputs": [
@@ -334,13 +281,9 @@
               "parallelism": true
             },
             "copy-workspace-modules": {
-              "dependsOn": [
-                "build"
-              ],
+              "dependsOn": ["build"],
               "cache": true,
-              "outputs": [
-                "{workspaceRoot}/dist/server/workspace_modules"
-              ],
+              "outputs": ["{workspaceRoot}/dist/server/workspace_modules"],
               "executor": "@nx/js:copy-workspace-modules",
               "options": {
                 "buildTarget": "build"
@@ -349,10 +292,7 @@
               "parallelism": true
             },
             "prune": {
-              "dependsOn": [
-                "prune-lockfile",
-                "copy-workspace-modules"
-              ],
+              "dependsOn": ["prune-lockfile", "copy-workspace-modules"],
               "executor": "nx:noop",
               "configurations": {},
               "options": {},
@@ -391,19 +331,14 @@
             },
             "test": {
               "executor": "@nx/vitest:test",
-              "outputs": [
-                "{options.reportsDirectory}"
-              ],
+              "outputs": ["{options.reportsDirectory}"],
               "options": {
                 "reportsDirectory": "coverage/ui"
               },
               "configurations": {},
               "parallelism": true,
               "cache": true,
-              "inputs": [
-                "default",
-                "^production"
-              ]
+              "inputs": ["default", "^production"]
             }
           },
           "name": "ui",

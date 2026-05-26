@@ -67,10 +67,11 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@angular/build:unit-test",
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
       "options": {
-        "watch": false,
-        "polyfills": []
+        "config": "client/vite.config.mts",
+        "reportsDirectory": "coverage/client"
       }
     },
     "serve-static": {
