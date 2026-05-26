@@ -36,6 +36,7 @@
     "@nx/web": "22.7.2",
     "@nx/webpack": "22.7.2",
     "@nx/workspace": "22.7.2",
+    "@oxc-project/runtime": "^0.132.0",
     "@schematics/angular": "~21.2.0",
     "@types/node": "20.19.9",
     "@typescript-eslint/utils": "^8.40.0",
