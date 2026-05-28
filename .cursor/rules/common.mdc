@@ -1,0 +1,26 @@
+---
+description: Common rules for project
+alwaysApply: true
+---
+
+## General Principles
+- Use TypeScript strictly (no `any`)
+- Prefer clarity over cleverness
+- Follow existing ESLint and Prettier rules
+- Do not introduce new dependencies without asking
+- Generate code that is easy to read and maintain
+
+## Code Style
+- Avoid deeply nested conditionals
+- Keep functions small (one responsibility)
+- Avoid magic numbers and strings
+
+## Testing
+- Generate unit tests
+
+## Communication
+- If requirements are unclear, ask a clarifying question
+- Explain non-obvious decisions briefly
+- Do not over-explain simple code
+
+## Architecture

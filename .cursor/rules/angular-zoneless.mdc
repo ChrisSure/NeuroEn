@@ -1,7 +1,7 @@
 ---
 description: Angular zoneless and modern practices
 globs: client/**/*.ts, client/**/*.html, ui/**/*.ts, ui/**/*.html
-alwaysApply: false
+alwaysApply: true
 ---
 
 # Angular Zoneless Rules
