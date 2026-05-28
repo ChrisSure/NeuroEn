@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "node .cursor/hooks/format.js",
+        "matcher": "\\.(ts|html|scss|css|json|md)$",
+        "failClosed": false
+      }
+    ]
+  }
+}
